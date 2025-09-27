@@ -1,23 +1,12 @@
 """Utility script to register local Prefect blocks for Cobalt and MinIO.
 
-Usage:
-    uv run python scripts/register_local_blocks.py
-    # or: poetry run python scripts/register_local_blocks.py
-
-Environment variables (with sensible defaults for local development):
-    COBALT_BASE_URL=http://localhost:9100
-    MINIO_ENDPOINT=http://127.0.0.1:9100
-    MINIO_BUCKET=stevedore
-    MINIO_ACCESS_KEY=admin
-    MINIO_SECRET_KEY=admin123
-    MINIO_PATH_PREFIX=None
+Environment variables:
+    Read from `profiles/local.env` via docker-compose `env_file` or manual export.
 """
 
 from __future__ import annotations
 
 import os
-
-os.environ.setdefault("PREFECT_API_URL", "http://127.0.0.1:4200/api")
 
 from prefect_aws.credentials import AwsCredentials
 from prefect_aws.s3 import S3Bucket
@@ -26,13 +15,13 @@ from stevedore.blocks import CobaltSettings, MinIOBucket
 
 
 def main() -> None:
-    cobalt_base_url = os.getenv("COBALT_BASE_URL", "http://localhost:9100")
+    cobalt_base_url = os.environ["COBALT_BASE_URL"]
 
-    minio_endpoint = os.getenv("MINIO_ENDPOINT", "http://127.0.0.1:9100")
-    minio_bucket_name = os.getenv("MINIO_BUCKET", "stevedore")
-    minio_access_key = os.getenv("MINIO_ACCESS_KEY", "admin")
-    minio_secret_key = os.getenv("MINIO_SECRET_KEY", "admin123")
-    minio_path_prefix = os.getenv("MINIO_PATH_PREFIX", None)
+    minio_endpoint = os.environ["MINIO_ENDPOINT"]
+    minio_bucket_name = os.environ["MINIO_BUCKET"]
+    minio_access_key = os.environ["MINIO_ACCESS_KEY"]
+    minio_secret_key = os.environ["MINIO_SECRET_KEY"]
+    minio_path_prefix = os.getenv("MINIO_PATH_PREFIX")
 
     cobalt_settings = CobaltSettings(
         base_url=cobalt_base_url,

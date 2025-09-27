@@ -2,38 +2,20 @@
 
 from __future__ import annotations
 
-from prefect.infrastructure.docker import DockerContainer
-from prefect.server.schemas.core import WorkPool
+from pathlib import Path
 
-from stevedore.flows.download_video_flow import cobalt_video_download_flow
+from prefect.deployments import load_deployments_from_yaml
 
 
-def deploy() -> WorkPool:
-    infrastructure = DockerContainer(
-        image="ghcr.io/herugen/stevedore-downloader:latest",
-        image_pull_policy="IF_NOT_PRESENT",
-        env={
-            "PREFECT_LOGGING_LEVEL": "INFO",
-        },
-    )
+def deploy() -> None:
+    yaml_path = Path(__file__).with_suffix(".yaml")
+    deployments = load_deployments_from_yaml(str(yaml_path))
 
-    deployment = cobalt_video_download_flow.to_deployment(
-        name="cobalt-download-worker",
-        version="1.0.0",
-        work_pool_name="cobalt-downloads",
-        infrastructure=infrastructure,
-        tags=["cobalt", "downloads"],
-        parameters={
-            "source_url": "https://example.com/video.mp4",
-            "task_id": "example-task",
-        },
-    )
-
-    deployment.apply()
-    return deployment.work_pool
+    for deployment in deployments:
+        deployment.apply()
 
 
 if __name__ == "__main__":
-    work_pool = deploy()
-    print(f"Deployment applied to work pool '{work_pool.name}'.")
+    deploy()
+    print("Deployment(s) applied from local_download_worker.yaml")
 

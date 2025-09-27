@@ -1,0 +1,17 @@
+deployments:
+  - name: cobalt-download-worker
+    version: "1.0.0"
+    flow_name: cobalt-video-download
+    entrypoint: stevedore/flows/download_video_flow.py:cobalt_video_download_flow
+    work_pool:
+      name: cobalt-downloads
+      type: docker
+      job_variables:
+        image: ghcr.io/herugen/stevedore-downloader:latest
+    tags:
+      - cobalt
+      - downloads
+    parameters:
+      source_url: https://example.com/video.mp4
+      task_id: example-task
+

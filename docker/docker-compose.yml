@@ -7,14 +7,8 @@ services:
       context: ..
       dockerfile: docker/download-worker/Dockerfile
     command: python scripts/register_local_blocks.py
-    environment:
-      PREFECT_API_URL: http://host.docker.internal:4200/api
-      COBALT_BASE_URL: http://host.docker.internal:9100
-      MINIO_ENDPOINT: http://host.docker.internal:9100
-      MINIO_BUCKET: stevedore
-      MINIO_ACCESS_KEY: admin
-      MINIO_SECRET_KEY: admin123
-      #MINIO_PATH_PREFIX: downloads
+    env_file:
+      - ../profiles/local.env
     restart: "no"
 
   apply-deployment:
@@ -23,8 +17,8 @@ services:
       context: ..
       dockerfile: docker/download-worker/Dockerfile
     command: python deployments/local_download_worker.py
-    environment:
-      PREFECT_API_URL: http://host.docker.internal:4200/api
+    env_file:
+      - ../profiles/local.env
     depends_on:
       register-blocks:
         condition: service_completed_successfully
@@ -35,8 +29,8 @@ services:
     build:
       context: ..
       dockerfile: docker/download-worker/Dockerfile
-    environment:
-      PREFECT_API_URL: http://host.docker.internal:4200/api
+    env_file:
+      - ../profiles/local.env
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped

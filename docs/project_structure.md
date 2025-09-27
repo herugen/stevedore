@@ -8,7 +8,7 @@
 - `tasks/`：存放可复用的任务函数或子流程；按功能模块拆分文件，如 `io.py`、`transforms.py` 等，Flow 通过导入这些任务组合业务逻辑。
 - `blocks/`：封装 Prefect Block 定义与注册逻辑（如凭据、存储、通知）；推荐提供 `__init__.py` 与注册脚本（如 `register.py`）。
 - `deployments/`：管理 Prefect 部署脚本或声明（Python/YAML），按环境或用途拆分文件，例如 `prod.py`、`dev.py`。部署脚本负责引用 Flow 并定义工作池、参数及调度。
-- `profiles/`：集中存放 Prefect Profile 或环境配置模板（如 `.prefect/profiles.toml` 片段、`.env.example`），用于本地与服务器环境的配置对齐。
+- `profiles/`：集中存放 Prefect Profile 或环境配置模板（如 `.env.example`、`*.toml`），用于本地与服务器环境的配置对齐。
 - `tests/`：使用 `pytest` 等框架对任务、辅助函数及 Flow 进行单元与集成测试，确保逻辑正确性与回归验证。
 - `scripts/`：与项目相关的辅助脚本（如 Block 注册、调试、数据模拟、CI 命令），避免散落在根目录。
 - `docs/`：文档类内容（本文档、使用指南、架构说明等），保持持续更新。
