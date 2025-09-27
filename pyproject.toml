@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stevedore"
+version = "0.1.0"
+description = "Utilities and CLI for the stevedore Prefect project"
+requires-python = ">=3.9"
+dependencies = [
+    "prefect",
+    "prefect-aws",
+    "prefect-docker",
+    "httpx",
+    "typer",
+    "pyyaml",
+    "python-dotenv",
+]
+
+[project.scripts]
+stevedore = "stevedore.cli:main"
+
+
+
+
+

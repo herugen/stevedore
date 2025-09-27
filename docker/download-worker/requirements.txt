@@ -1,4 +1,8 @@
 prefect
 prefect-aws
+prefect-docker
+python-dotenv
 httpx
+typer
+pyyaml
 
