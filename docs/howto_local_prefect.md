@@ -15,9 +15,15 @@
    cd stevedore
    ```
 4. 复制本地环境变量模板（Compose 依赖该文件）：
-   ```bash
-   cp profiles/local.env.example profiles/local.env
-   ```
+   - macOS / Windows：
+     ```bash
+     cp profiles/local.env.example profiles/local.env
+     ```
+   - Linux：
+     ```bash
+     cp profiles/linux.env.example profiles/local.env
+     # 如有需要，将 172.17.0.1 替换为宿主机实际 IP
+     ```
 
 ## 2. Prefect Server 与外部服务
 

@@ -3,15 +3,15 @@ name = "local"
 
 [settings]
 # Prefect API
-PREFECT_API_URL = "http://host.docker.internal:4200/api"
+PREFECT_API_URL = "http://127.0.0.1:4200/api"
 
 # Logging
 PREFECT_LOGGING_LEVEL = "INFO"
 
 # Default work pool for flow runs
 PREFECT_DEFAULT_WORK_POOL_NAME = "cobalt-downloads"
-COBALT_BASE_URL = "http://host.docker.internal:9100"
-MINIO_ENDPOINT = "http://host.docker.internal:9100"
+COBALT_BASE_URL = "http://127.0.0.1:9100"
+MINIO_ENDPOINT = "http://127.0.0.1:9100"
 MINIO_BUCKET = "stevedore"
 MINIO_PATH_PREFIX = ""
 

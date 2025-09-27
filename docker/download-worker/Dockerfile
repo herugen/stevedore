@@ -15,6 +15,7 @@ COPY __init__.py stevedore/__init__.py
 COPY blocks stevedore/blocks
 COPY tasks stevedore/tasks
 COPY flows stevedore/flows
+COPY scripts stevedore/scripts
 
 COPY docker/download-worker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
