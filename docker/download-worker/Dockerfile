@@ -1,4 +1,4 @@
-ARG PREFECT_BASE_IMAGE=ghcr.io/prefecthq/prefect:3.4-python3.12
+ARG PREFECT_BASE_IMAGE=prefecthq/prefect:3.4-python3.12
 FROM ${PREFECT_BASE_IMAGE}
 
 ENV PREFECT_HOME=/opt/prefect
