@@ -79,7 +79,7 @@ scripts/run_deployment_once.sh --param source_url="https://x.com/elonmusk/status
 
 默认从 `profiles/local.env` 读取 Prefect 连接信息，可通过 `STEVEDORE_ENV_FILE` 指定其他文件。
 
-> 默认使用镜像 `ghcr.io/herugen/stevedore-downloader:latest`；如需使用本地镜像，可通过环境变量 `STEVEDORE_IMAGE` 覆盖。
+> 默认使用镜像 `ghcr.io/herugen/stevedore/stevedore-downloader:latest`；如需使用本地镜像，可通过环境变量 `STEVEDORE_IMAGE` 覆盖。
 
 - 如果你选择手动执行脚本，也可以在宿主机运行（确保已安装 `uv` 或适当的 Python 环境）：
   ```bash

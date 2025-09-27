@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-IMAGE="${STEVEDORE_IMAGE:-ghcr.io/herugen/stevedore-downloader:latest}"
+IMAGE="${STEVEDORE_IMAGE:-ghcr.io/herugen/stevedore/stevedore-downloader:latest}"
 ENV_FILE="${STEVEDORE_ENV_FILE:-profiles/local.env}"
 WORK_POOL="${WORK_POOL_NAME:-cobalt-downloads}"
 

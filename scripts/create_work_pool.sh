@@ -5,7 +5,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-IMAGE="${STEVEDORE_IMAGE:-ghcr.io/herugen/stevedore-downloader:latest}"
+IMAGE="${STEVEDORE_IMAGE:-ghcr.io/herugen/stevedore/stevedore-downloader:latest}"
 POOL_NAME="${WORK_POOL_NAME:-cobalt-downloads}"
 POOL_TYPE="${WORK_POOL_TYPE:-docker}"
 ENV_FILE="${STEVEDORE_ENV_FILE:-$REPO_ROOT/profiles/local.env}"
