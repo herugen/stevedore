@@ -1,4 +1,5 @@
-FROM python:3.11-slim
+ARG PREFECT_BASE_IMAGE=ghcr.io/prefecthq/prefect:3.4-python3.12
+FROM ${PREFECT_BASE_IMAGE}
 
 ENV PREFECT_HOME=/opt/prefect
 ENV PYTHONDONTWRITEBYTECODE=1

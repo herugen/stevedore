@@ -10,7 +10,7 @@ from stevedore.flows.download_video_flow import cobalt_video_download_flow
 
 def deploy() -> WorkPool:
     infrastructure = DockerContainer(
-        image="stevedore-download-worker:latest",
+        image="ghcr.io/herugen/stevedore-downloader:latest",
         image_pull_policy="IF_NOT_PRESENT",
         env={
             "PREFECT_LOGGING_LEVEL": "INFO",

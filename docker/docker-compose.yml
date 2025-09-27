@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   register-blocks:
-    image: stevedore-download-worker:latest
+    image: ghcr.io/herugen/stevedore-downloader:latest
     build:
       context: ..
       dockerfile: docker/download-worker/Dockerfile
@@ -18,7 +18,7 @@ services:
     restart: "no"
 
   apply-deployment:
-    image: stevedore-download-worker:latest
+    image: ghcr.io/herugen/stevedore-downloader:latest
     build:
       context: ..
       dockerfile: docker/download-worker/Dockerfile
@@ -30,8 +30,8 @@ services:
         condition: service_completed_successfully
     restart: "no"
 
-  prefect-worker:
-    image: stevedore-download-worker:latest
+  downloader:
+    image: ghcr.io/herugen/stevedore-downloader:latest
     build:
       context: ..
       dockerfile: docker/download-worker/Dockerfile
