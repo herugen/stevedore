@@ -8,6 +8,7 @@ deployments:
       type: docker
       job_variables:
         image: ghcr.io/herugen/stevedore/stevedore-downloader:latest
+        image_pull_policy: IfNotPresent
     tags:
       - cobalt
       - downloads
