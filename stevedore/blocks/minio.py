@@ -30,10 +30,10 @@ class MinIOBucket(Block):
         example="/",
     )
 
-    def load_bucket(self) -> S3Bucket:
+    async def load_bucket(self) -> S3Bucket:
         """Load the configured S3Bucket block instance."""
 
-        return S3Bucket.load(self.bucket_block_name)
+        return await S3Bucket.load(self.bucket_block_name)
 
 
 __all__ = ["MinIOBucket"]

@@ -42,9 +42,9 @@ async def download_video_asset(
         httpx.HTTPError: On network-level failures when communicating with Cobalt.
     """
 
-    cobalt_settings = CobaltSettings.load(cobalt_settings_block)
-    bucket_config = MinIOBucket.load(minio_bucket_block)
-    s3_bucket = bucket_config.load_bucket()
+    cobalt_settings = await CobaltSettings.load(cobalt_settings_block)
+    bucket_config = await MinIOBucket.load(minio_bucket_block)
+    s3_bucket = await bucket_config.load_bucket()
 
     async with httpx.AsyncClient(timeout=cobalt_settings.request_timeout_seconds) as client:
         response = await client.post(
