@@ -1,0 +1,15 @@
+deployments:
+  - name: video-pipeline
+    version: "1.0.0"
+    flow_name: video-to-audio-pipeline
+    entrypoint: stevedore/flows/stevedore.py:video_pipeline_flow
+    work_pool:
+      name: orchestration
+      type: docker
+      job_variables:
+        image: ghcr.io/herugen/stevedore/stevedore-orchestration:latest
+        image_pull_policy: IfNotPresent
+    tags:
+      - orchestration
+      - pipeline
+

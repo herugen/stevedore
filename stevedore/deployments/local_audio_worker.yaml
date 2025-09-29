@@ -1,0 +1,15 @@
+deployments:
+  - name: audio-processing
+    version: "1.0.0"
+    flow_name: audio-extraction
+    entrypoint: stevedore/flows/audio_extraction_flow.py:audio_extraction_flow
+    work_pool:
+      name: audio-processing
+      type: docker
+      job_variables:
+        image: ghcr.io/herugen/stevedore/stevedore-audio:latest
+        image_pull_policy: IfNotPresent
+    tags:
+      - audio
+      - extraction
+

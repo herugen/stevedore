@@ -12,6 +12,8 @@ from botocore.exceptions import ClientError
 
 from stevedore.blocks import CobaltSettings, MinIOBucket
 from stevedore.deployments.local_download_worker import deploy as deploy_local_downloads
+from stevedore.deployments.local_audio_worker import deploy as deploy_local_audio
+from stevedore.deployments.local_pipeline import deploy as deploy_local_pipeline
 
 from prefect_aws.credentials import AwsClientParameters, AwsCredentials
 from prefect_aws.s3 import S3Bucket
@@ -126,6 +128,8 @@ def apply_deployments() -> None:
     """Apply all local deployments defined in the repository."""
 
     deploy_local_downloads()
+    deploy_local_audio()
+    deploy_local_pipeline()
 
 
 def _ensure_bucket_exists(aws_credentials: AwsCredentials, bucket_name: str) -> None:

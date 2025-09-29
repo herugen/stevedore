@@ -5,16 +5,16 @@
 ## 顶层布局
 
 - `stevedore/blocks/`：封装 Prefect Block 定义。
-- `stevedore/tasks/`：存放可复用的 Prefect 任务函数。
-- `stevedore/flows/`：保存 Prefect Flow 定义，Flow 负责组合任务并描述编排。
-- `stevedore/deployments/`：管理 Prefect 部署脚本或 YAML 声明。
+- `stevedore/tasks/`：存放可复用的 Prefect 任务函数（如 Cobalt 下载、音频提取等）。
+- `stevedore/flows/`：保存 Prefect Flow 定义，可按阶段拆分子 Flow（如下载与音频提取）并由父 Flow 编排。
+- `stevedore/deployments/`：管理 Prefect 部署脚本或 YAML 声明（如下载 Worker、音频处理 Worker）。
 - `profiles/`：集中存放 Prefect Profile 或环境配置模板（如 `.env.example`、`*.toml`），用于本地与服务器环境的配置对齐。
 - `tests/`：使用 `pytest` 等框架对任务、辅助函数及 Flow 进行单元与集成测试，确保逻辑正确性与回归验证。
 - `scripts/`：与项目相关的辅助脚本（如 Block 注册、调试、数据模拟、CI 命令）。
   - `create_work_pool.sh`：容器化 CLI，创建/更新 Prefect 工作池。
   - `register_local_blocks.sh`：容器化 CLI，注册本地开发所需 Block。
-  - `apply_local_deployments.sh`：容器化 CLI，应用仓库内的 Prefect Deployment。
-  - `start_downloader_worker.sh`：使用容器启动 Cobalt 下载 Worker。
+  - `apply_local_deployments.sh`：容器化 CLI，应用仓库内的 Prefect Deployment（下载/音频）。
+  - `start_downloader_worker.sh` / `start_audio_worker.sh`：使用容器启动对应 Work Pool 的 Prefect Worker。
 - `docs/`：文档类内容（本文档、使用指南、架构说明等），保持持续更新。
 - `docker/`：容器化相关文件（如 `Dockerfile`、镜像配置），满足部署或 CI 需求。
 - 项目根目录：放置 `pyproject.toml`/`requirements.txt` 等依赖声明、`README.md`、`main.py` 或 `serve.py` 等运行入口文件。
